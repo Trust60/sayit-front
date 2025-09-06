@@ -28,14 +28,6 @@ import {
 } from "../../ui/sheet";
 import Image from "next/image";
 
-const languages = [
-  { value: "ua", label: "Ua" },
-  { value: "en", label: "En" },
-  { value: "fr", label: "Fr" },
-  { value: "de", label: "De" },
-  { value: "pl", label: "Pl" },
-];
-
 const navigationLinks = [
   { href: "#", label: "Головна" },
   { href: "#", label: "Викладачі" },
@@ -43,9 +35,16 @@ const navigationLinks = [
   { href: "#", label: "Контакти" },
 ];
 
+export function Logo({ className = "" }: { className?: string }) {
+  return (
+    <a href="#" className={`text-primary hover:text-primary/90 ${className}`}>
+      <Image src="/logo.svg" alt="Logo" width={50} height={50} quality={100} />
+    </a>
+  );
+}
+
 export default function Navbar() {
   const [isSticky, setIsSticky] = useState(false);
-  const id = useId();
 
   useEffect(() => {
     const handler = () => {
@@ -55,15 +54,14 @@ export default function Navbar() {
     handler();
     return () => window.removeEventListener("scroll", handler);
   }, []);
+  const headerClasses = `border-b px-4 md:px-6 w-full z-50 transition-all duration-300 ${
+    isSticky
+      ? "fixed top-0 left-0 bg-card/90 shadow backdrop-blur-sm"
+      : "absolute top-0 left-0 bg-transparent"
+  }`;
+
   return (
-    <header
-      className={[
-        "border-b px-4 md:px-6 w-full z-50 transition-all duration-300",
-        isSticky
-          ? "fixed top-0 left-0 bg-card/90 shadow backdrop-blur-sm"
-          : "absolute top-0 left-0 bg-transparent",
-      ].join(" ")}
-    >
+    <header className={headerClasses}>
       <div className="flex h-16 items-center justify-between gap-4 max-w-[850px] xl:max-w-[1140px] mx-auto">
         <div className="flex items-center gap-2">
           {/* Mobile menu */}
@@ -107,18 +105,7 @@ export default function Navbar() {
                 <SheetContent className="overflow-y-auto" side="left">
                   <SheetHeader>
                     <SheetTitle>
-                      <a
-                        href="#"
-                        className="text-primary hover:text-primary/90"
-                      >
-                        <Image
-                          src={"/logo.svg"}
-                          alt="Logo"
-                          width={50}
-                          height={50}
-                          quality={100}
-                        />
-                      </a>
+                      <Logo />
                     </SheetTitle>
                   </SheetHeader>
                   <div className="flex flex-col gap-6 p-4">
@@ -147,15 +134,7 @@ export default function Navbar() {
           </div>
           {/* Main nav */}
           <div className="flex items-center gap-6">
-            <a href="#" className="text-primary hover:text-primary/90">
-              <Image
-                src={"/logo.svg"}
-                alt="Logo"
-                width={50}
-                height={50}
-                quality={100}
-              />
-            </a>
+            <Logo />
             <NavigationMenu className="max-md:hidden">
               <NavigationMenuList className="gap-2">
                 {navigationLinks.map((link, index) => (
@@ -173,25 +152,6 @@ export default function Navbar() {
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <Select defaultValue="ua">
-            <SelectTrigger
-              id={`language-${id}`}
-              className="[&>svg]:text-muted-foreground/80 hover:bg-accent hover:text-accent-foreground h-8 border-none px-2 shadow-none [&>svg]:shrink-0"
-              aria-label="Select language"
-            >
-              <GlobeIcon size={16} aria-hidden="true" />
-              <SelectValue className="hidden sm:inline-flex" />
-            </SelectTrigger>
-            <SelectContent className="[&_*[role=option]]:ps-2 [&_*[role=option]]:pe-8 [&_*[role=option]>span]:start-auto [&_*[role=option]>span]:end-2 [&_*[role=option]>span]:flex [&_*[role=option]>span]:items-center [&_*[role=option]>span]:gap-2">
-              {languages.map((lang) => (
-                <SelectItem key={lang.value} value={lang.value}>
-                  <span className="flex items-center gap-2">
-                    <span className="truncate">{lang.label}</span>
-                  </span>
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
           <div className="items-center justify-center gap-2 hidden md:flex">
             <NotificationMenu />
             <ThemeToggle />

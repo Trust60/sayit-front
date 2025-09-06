@@ -1,5 +1,8 @@
+import AchievementsSection from "@/components/sections/achievements-section/achievements";
+import FaqSection from "@/components/sections/faq-section/faq";
 import HeroSection from "@/components/sections/hero-section/hero-section";
 import ReviewsSection from "@/components/sections/reviews-section/reviews";
+import WhyWeSection from "@/components/sections/why-we-section/why-we";
 import { Button } from "@/components/ui/button";
 import Section from "@/components/ui/section";
 import TeacherSwiper from "@/components/ui/teacher-swiper";
@@ -96,6 +99,13 @@ export default function Home() {
       </Section>
 
       <ReviewsSection />
+      <Section>
+        <AchievementsSection />
+      </Section>
+      <WhyWeSection />
+      <Section>
+        <FaqSection />
+      </Section>
     </main>
   );
 }
