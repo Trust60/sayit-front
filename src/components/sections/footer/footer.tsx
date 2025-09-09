@@ -32,7 +32,7 @@ const footerSections: FooterSection[] = [
     links: [
       { href: "/level-test", label: "Онлайн-тест уровня" },
       { href: "/trial-lesson", label: "Пробний урок" },
-      { href: "/blog", label: "Блог" },
+      { href: "/feed", label: "Блог" },
       { href: "/vocabulary", label: "Картки слів і словники" },
     ],
   },
@@ -49,7 +49,7 @@ const footerSections: FooterSection[] = [
     title: "Контакти",
     links: [
       { href: "/about", label: "Про нас" },
-      { href: "/team", label: "Наша команда" },
+      { href: "/teachers", label: "Наші викладачі" },
       { href: "/contact", label: "Контакти" },
     ],
   },

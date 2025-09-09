@@ -10,15 +10,7 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import ThemeToggle from "../../ui/theme-toggle";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../../ui/select";
-import { useEffect, useId, useState } from "react";
-import { GlobeIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 import {
   Sheet,
   SheetContent,
@@ -27,6 +19,7 @@ import {
   SheetTrigger,
 } from "../../ui/sheet";
 import Image from "next/image";
+import Link from "next/link";
 
 const navigationLinks = [
   { href: "#", label: "Головна" },
@@ -37,9 +30,12 @@ const navigationLinks = [
 
 export function Logo({ className = "" }: { className?: string }) {
   return (
-    <a href="#" className={`text-primary hover:text-primary/90 ${className}`}>
+    <Link
+      href="/"
+      className={`text-primary hover:text-primary/90 ${className}`}
+    >
       <Image src="/logo.svg" alt="Logo" width={50} height={50} quality={100} />
-    </a>
+    </Link>
   );
 }
 
