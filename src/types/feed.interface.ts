@@ -1,3 +1,5 @@
+import { Teacher } from "./teacher.interface";
+
 export interface FeedHashtag {
   id: string;
   name: string;
@@ -9,8 +11,11 @@ export interface FeedHashtagsList {
 
 export interface FeedArticle {
   id: string;
+  teacher_id: string;
   title: string;
-  description: string;
-  image: string;
-  date: string;
+  content: string;
+  post_image_url: string;
+  created_at: string;
+  likes_count: number;
+  teacher?: Teacher;
 }

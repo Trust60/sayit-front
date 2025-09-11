@@ -23,8 +23,8 @@ import Link from "next/link";
 
 const navigationLinks = [
   { href: "#", label: "Головна" },
-  { href: "#", label: "Викладачі" },
-  { href: "#", label: "Блог" },
+  { href: "/teachers", label: "Викладачі" },
+  { href: "/feed", label: "Блог" },
   { href: "#", label: "Контакти" },
 ];
 
