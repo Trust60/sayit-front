@@ -3,7 +3,6 @@
 import TeachersCard from "./teachers-card";
 import { useTeachers } from "@/hooks/useTeachers";
 import CustomPagination from "@/components/ui/custom-pagination";
-import { Skeleton } from "@/components/ui/skeleton";
 import TeachersCardSkeleton from "./teachers-card-skeleton";
 
 export default function TeachersSection() {

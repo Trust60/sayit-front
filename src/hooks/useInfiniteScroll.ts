@@ -8,7 +8,7 @@ interface ApiResponse {
   totalCount: number;
 }
 
-export function useInfiniteScroll() {
+export function useInfiniteScroll(apiUrl: string = "/api/feed") {
   const [posts, setPosts] = useState<FeedArticle[]>([]);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
@@ -22,7 +22,7 @@ export function useInfiniteScroll() {
       setError(null);
 
       try {
-        const response = await fetch(`/api/feed?page=${pageNum}&limit=5`);
+        const response = await fetch(`${apiUrl}?page=${pageNum}&limit=5`);
 
         if (!response.ok) {
           throw new Error("Помилка завантаження постів");
@@ -48,7 +48,7 @@ export function useInfiniteScroll() {
         setLoading(false);
       }
     },
-    []
+    [apiUrl]
   );
 
   const loadMore = useCallback(() => {

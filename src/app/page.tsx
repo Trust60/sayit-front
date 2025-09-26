@@ -5,7 +5,7 @@ import ReviewsSection from "@/components/sections/reviews-section/reviews";
 import WhyWeSection from "@/components/sections/why-we-section/why-we";
 import { Button } from "@/components/ui/button";
 import Section from "@/components/ui/section";
-import TeacherSwiper from "@/components/ui/teacher-swiper";
+import TeacherSwiper from "@/components/sliders/teacher-swiper/teacher-swiper";
 import TranslationTooltip from "@/components/ui/translation-tooltip";
 import { HandHeart, Medal, SearchCheck, Wand } from "lucide-react";
 

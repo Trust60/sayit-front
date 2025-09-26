@@ -2,10 +2,10 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
-import ReviewSwiperCard from "./review-swiper-card";
 
 import "swiper/css";
 import "swiper/css/free-mode";
+import ReviewSwiperCard from "./review-swiper-card";
 
 const reviews = [
   {

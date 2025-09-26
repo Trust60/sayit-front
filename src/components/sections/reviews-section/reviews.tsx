@@ -1,5 +1,5 @@
 "use client";
-import ReviewSwiper from "@/components/ui/reviews-swiper";
+import ReviewSwiper from "@/components/sliders/review-swiper/reviews-swiper";
 import TranslationTooltip from "@/components/ui/translation-tooltip";
 
 export default function ReviewsSection() {

@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
+import StarRating from "@/components/ui/star-rating";
 import Image from "next/image";
 import { Teacher } from "@/types/teacher.interface";
+import Link from "next/link";
 
 interface TeachersCardProps {
   teacher: Teacher;
@@ -32,12 +34,14 @@ export default function TeachersCard({ teacher }: TeachersCardProps) {
           <h2 className="text-lg font-semibold">
             {teacher.full_name || "Викладач"}
           </h2>
-          <Button
-            variant="outline"
-            className="w-fit border bg-transparent border-foreground text-foreground rounded-2xl"
-          >
-            Детальніше
-          </Button>
+          <Link href={`/teacher/${teacher.id}`}>
+            <Button
+              variant="outline"
+              className="w-fit border bg-transparent border-foreground text-foreground rounded-2xl"
+            >
+              Детальніше
+            </Button>
+          </Link>
         </div>
         <div className="flex relative w-2/5 overflow-hidden">
           <Image
@@ -64,9 +68,15 @@ export default function TeachersCard({ teacher }: TeachersCardProps) {
         </div>
       </div>
       <div className="px-4">
-        <p className="text-sm text-muted-foreground">
-          Навчає з {new Date().getFullYear()} року
-        </p>
+        <div className="flex items-center justify-between mb-2">
+          <p className="text-sm text-muted-foreground">
+            Навчає з{" "}
+            {new Date().getFullYear() - (teacher.years_of_experience || 0)} року
+          </p>
+          {teacher.rating && (
+            <StarRating rating={teacher.rating} size="sm" showNumber={true} />
+          )}
+        </div>
         <p className="text-lg font-semibold">{teacher.full_name}</p>
         <p>{teacher.bio}</p>
       </div>
