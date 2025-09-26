@@ -7,7 +7,7 @@ export default function TeachersCardSkeleton({ key }: { key: number }) {
       className="flex flex-col gap-4 bg-card rounded-2xl shadow-md p-1"
     >
       <div className="flex items-center relative">
-        <Skeleton className="h-[200px] w-[350px]" />
+        <Skeleton className="h-[200px] w-full" />
       </div>
       <div className="px-4 space-y-2">
         <Skeleton className="h-4 w-24" />

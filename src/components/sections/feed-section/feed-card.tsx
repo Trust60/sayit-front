@@ -8,6 +8,7 @@ import Image from "next/image";
 import { FeedArticle } from "@/types/feed.interface";
 import { Teacher } from "@/types/teacher.interface";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 interface FeedCardProps {
   post: FeedArticle;
@@ -99,28 +100,32 @@ export default function FeedCard({ post }: FeedCardProps) {
         {isLoadingTeacher ? (
           <Skeleton className="size-10 rounded-full" />
         ) : (
-          <Avatar className="size-10">
-            <AvatarImage
-              src={
-                teacher?.profile_image_url || "https://github.com/shadcn.png"
-              }
-              alt={teacher?.full_name || "Teacher"}
-            />
-            <AvatarFallback>
-              {teacher?.full_name
-                ? teacher.full_name.charAt(0).toUpperCase() +
-                  teacher.full_name.charAt(1).toUpperCase()
-                : "T"}
-            </AvatarFallback>
-          </Avatar>
+          <Link href={`/teacher/${teacher?.id}`}>
+            <Avatar className="size-10">
+              <AvatarImage
+                src={
+                  teacher?.profile_image_url || "https://github.com/shadcn.png"
+                }
+                alt={teacher?.full_name || "Teacher"}
+              />
+              <AvatarFallback>
+                {teacher?.full_name
+                  ? teacher.full_name.charAt(0).toUpperCase() +
+                    teacher.full_name.charAt(1).toUpperCase()
+                  : "T"}
+              </AvatarFallback>
+            </Avatar>
+          </Link>
         )}
         <div>
           {isLoadingTeacher ? (
             <Skeleton className="h-5 w-32 mb-1" />
           ) : (
-            <h3 className="text-base font-semibold">
-              {teacher?.full_name || `Teacher ${post.teacher_id}`}
-            </h3>
+            <Link href={`/teacher/${teacher?.id}`}>
+              <h3 className="text-base font-semibold">
+                {teacher?.full_name || `Teacher ${post.teacher_id}`}
+              </h3>
+            </Link>
           )}
           <p className="text-sm text-muted-foreground">
             {formatDate(post.created_at)}

@@ -2,7 +2,7 @@
 
 import FeedCard from "@/components/sections/feed-section/feed-card";
 import FeedCardSkeleton from "@/components/sections/feed-section/feed-card-skeleton";
-import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
+import { useTeacherPostsCache } from "@/hooks/useTeacherPostsCache";
 import { FeedArticle } from "@/types/feed.interface";
 
 interface TeacherPostsProps {
@@ -11,7 +11,7 @@ interface TeacherPostsProps {
 
 export default function TeacherPosts({ teacherId }: TeacherPostsProps) {
   const { posts, loading, hasMore, error, observerRef, retry } =
-    useInfiniteScroll(`/api/teacher/${teacherId}/posts`);
+    useTeacherPostsCache(teacherId);
 
   return (
     <div className="max-w-[850px] xl:max-w-[1140px] mx-auto px-4">
